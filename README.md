@@ -45,6 +45,11 @@ Le projet suit une architecture en couches (Controller, Service, Repository, Ent
 * **Bienvenue Automatique** : Lors de chaque inscription (`/register`), un email de bienvenue stylisé est envoyé à l'utilisateur.
 * **Format HTML/CSS** : Utilisation de templates MimeMessage pour un rendu professionnel avec logo et boutons d'action.
 * **Asynchronisme de sécurité** : L'envoi est encapsulé dans un bloc `try-catch` pour garantir que l'inscription réussit même en cas d'indisponibilité du serveur SMTP.
+
+
+### 🔍 Récupération de compte
+* **Oubli d'identifiant** : Un endpoint dédié permet à l'utilisateur de renseigner son email pour recevoir instantanément son `username` par email.
+* **Sécurité & Confidentialité** : Seul le propriétaire de l'adresse email enregistrée peut récupérer l'identifiant, garantissant une protection contre l'usurpation simple.
   
 
 ## ⚙️ Installation et Configuration
