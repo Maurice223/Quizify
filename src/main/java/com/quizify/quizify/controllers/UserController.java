@@ -5,6 +5,7 @@ import com.quizify.quizify.repositories.UserRepository;
 import com.quizify.quizify.services.EmailService;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -78,5 +79,21 @@ public class UserController {
         }
         userRepository.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/forgot-username")
+    public ResponseEntity<?> forgotUsername(@RequestParam String email) {
+        // a. Chercher l'utilisateur par email
+        User user = userRepository.findByEmail(email).orElse(null);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Aucun compte n'est associé à cet email.");
+        }
+
+        // b. Envoyer le mail avec le username trouvé en base
+        emailService.sendForgotUsernameEmail(user.getEmail(), user.getUsername());
+
+        return ResponseEntity.ok("Un email contenant votre identifiant vous a été envoyé.");
     }
 }
