@@ -2,6 +2,7 @@ package com.quizify.quizify.controllers;
 
 import com.quizify.quizify.entities.User;
 import com.quizify.quizify.repositories.UserRepository;
+import com.quizify.quizify.services.EmailService;
 
 import java.util.List;
 
@@ -18,16 +19,33 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     // INSCRIPTION : Email et Username uniques
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
+        // 1. Vérifications (ton code actuel)
         if (userRepository.existsByUsername(user.getUsername())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ce nom d'utilisateur est déjà pris.");
         }
         if (userRepository.existsByEmail(user.getEmail())) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cet email est déjà utilisé.");
         }
-        return ResponseEntity.ok(userRepository.save(user));
+
+        // 2. Sauvegarde de l'utilisateur
+        User savedUser = userRepository.save(user);
+
+        // 3. Envoi de l'email (dans un bloc try/catch pour ne pas bloquer l'inscription
+        // si le mail échoue)
+        try {
+            emailService.sendWelcomeEmail(savedUser.getEmail(), savedUser.getUsername());
+        } catch (Exception e) {
+            // On affiche l'erreur dans la console Debian pour le debug
+            System.err.println("Erreur lors de l'envoi de l'email : " + e.getMessage());
+        }
+
+        return ResponseEntity.ok(savedUser);
     }
 
     // LOGIN : On vérifie juste si le username existe
