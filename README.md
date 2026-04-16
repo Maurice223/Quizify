@@ -36,6 +36,11 @@ Le projet suit une architecture en couches (Controller, Service, Repository, Ent
 * `GET /user/{userId}/history` : Récupère tous les scores passés d'un utilisateur spécifique.
 * `DELETE /{id}` : Supprime un enregistrement de score.
 
+### 🔔 Système de Notifications (Broadcast)
+* `POST /notifications/add` : Permet à l'administrateur de diffuser un message à tous les utilisateurs.
+* `GET /notifications/all` : Permet aux utilisateurs de récupérer les dernières annonces (triées par date).
+* `DELETE /notifications/{id}` : Suppression d'une notification.
+
 ## ⚙️ Installation et Configuration
 
 1. **Cloner le projet** :
