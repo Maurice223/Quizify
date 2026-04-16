@@ -22,16 +22,20 @@ Le projet suit une architecture en couches (Controller, Service, Repository, Ent
 
 ## 🛠️ Endpoints principaux de l'API
 
-### 👤 Utilisateurs (`/api/users`)
-* `POST /register` : Inscription d'un nouvel utilisateur.
+### 👤 Utilisateurs (`/users`)
+* `POST /register` : Inscription d'un nouvel utilisateur avec email de bienvenue.
 * `POST /login` : Connexion simplifiée par nom d'utilisateur.
 * `GET /all` : Liste tous les utilisateurs.
+* `GET /{id}` : Détails d'un compte précis.
+* `GET /{id}` : Détails d'un compte précis.
+* `POST /forgot-username` : Récupération : Envoi de l'identifiant par email.
+* `DELETE /{id}` :Suppression de compte,
 
-### 📝 Quiz & Questions (`/api/quiz`)
+### 📝 Quiz & Questions (`/quiz`)
 * `GET /all` : Récupère la liste complète des quiz avec questions et choix.
 * `POST /add` : Ajoute un nouveau quiz en base de données.
 
-### 📊 Système de Scores (`/api/scores`)
+### 📊 Système de Scores (`/scores`)
 * `POST /calculate/{quizId}/{userId}` : **Le moteur de calcul**. Envoie les réponses choisies, le serveur vérifie la validité et enregistre le score final automatiquement.
 * `GET /user/{userId}/history` : Récupère tous les scores passés d'un utilisateur spécifique.
 * `DELETE /{id}` : Supprime un enregistrement de score.
