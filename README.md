@@ -41,6 +41,12 @@ Le projet suit une architecture en couches (Controller, Service, Repository, Ent
 * `GET /notifications/all` : Permet aux utilisateurs de récupérer les dernières annonces (triées par date).
 * `DELETE /notifications/{id}` : Suppression d'une notification.
 
+### 📧 Service d'Emailing (MimeMessage & HTML)
+* **Bienvenue Automatique** : Lors de chaque inscription (`/register`), un email de bienvenue stylisé est envoyé à l'utilisateur.
+* **Format HTML/CSS** : Utilisation de templates MimeMessage pour un rendu professionnel avec logo et boutons d'action.
+* **Asynchronisme de sécurité** : L'envoi est encapsulé dans un bloc `try-catch` pour garantir que l'inscription réussit même en cas d'indisponibilité du serveur SMTP.
+  
+
 ## ⚙️ Installation et Configuration
 
 1. **Cloner le projet** :
