@@ -33,16 +33,16 @@
     <h3>Utilisateurs</h3>
     <table>
         <tr><th>Méthode</th><th>Endpoint</th><th>Description</th></tr>
-        <tr><td><span class="badge post">POST</span></td><td>/api/users/register</td><td>Inscription (Email/User uniques)</td></tr>
-        <tr><td><span class="badge post">POST</span></td><td>/api/users/login</td><td>Authentification simple</td></tr>
+        <tr><td><span class="badge post">POST</span></td><td>/users/register</td><td>Inscription (Email/User uniques)</td></tr>
+        <tr><td><span class="badge post">POST</span></td><td>/users/login</td><td>Authentification simple</td></tr>
     </table>
 
     <h3>Scores & Algorithmes</h3>
     <table>
         <tr><th>Méthode</th><th>Endpoint</th><th>Description</th></tr>
-        <tr><td><span class="badge post">POST</span></td><td>/api/scores/calculate/{qId}/{uId}</td><td>Calcul intelligent du score</td></tr>
-        <tr><td><span class="badge get">GET</span></td><td>/api/scores/user/{id}/history</td><td>Historique complet par utilisateur</td></tr>
-        <tr><td><span class="badge delete">DELETE</span></td><td>/api/scores/{id}</td><td>Suppression d'un score</td></tr>
+        <tr><td><span class="badge post">POST</span></td><td>/scores/calculate/{qId}/{uId}</td><td>Calcul intelligent du score</td></tr>
+        <tr><td><span class="badge get">GET</span></td><td>/scores/user/{id}/history</td><td>Historique complet par utilisateur</td></tr>
+        <tr><td><span class="badge delete">DELETE</span></td><td>/scores/{id}</td><td>Suppression d'un score</td></tr>
     </table>
 
     <h2>3. Points Forts</h2>
